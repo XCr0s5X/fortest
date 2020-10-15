@@ -1,0 +1,17 @@
+using System;
+
+namespace MathClassCS{
+    public class Program{
+        public static void Main(string[] args){
+            Console.WriteLine("Введiть число, яке бiльше за 2 i не кратне 2: ");
+            double a = Convert.ToDouble(Console.ReadLine());
+            if (a<=2 || a % 2 == 0){
+                Console.WriteLine("Умова не виконується");
+            }
+            else{
+                double b = a / 2;
+                Console.WriteLine(Math.Round(b, 1));
+            }
+        }
+    }
+}

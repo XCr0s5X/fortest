@@ -1,0 +1,13 @@
+using System;
+
+namespace MathClassCS{
+    public class Program{
+        public static void Main(string[] args){
+            Console.WriteLine("Введiть дробове: ");
+            double a = Convert.ToDouble(Console.ReadLine());
+            double a1 = a;
+            Console.WriteLine(Math.Round(a1));
+            Console.WriteLine(Math.Floor(a1));
+        }
+    }
+}

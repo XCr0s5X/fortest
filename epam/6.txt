@@ -1,0 +1,18 @@
+using System;
+
+namespace MathClassCS{
+    public class Program{
+        public static void Main(string[] args){
+            Console.WriteLine("Введiть дробове число, яке бiльше за 0: ");
+            double a = Convert.ToDouble(Console.ReadLine());
+            if (a < 0){
+                Console.WriteLine("Умова не виконується");
+            }
+            else{
+                double a1 = Math.Ceiling(a);
+                Console.WriteLine(a1);
+                Console.WriteLine(Math.Sqrt(a1));
+            }
+        }
+    }
+}

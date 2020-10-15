@@ -1,0 +1,12 @@
+using System;
+
+namespace MathClassCS{
+    public class Program{
+        public static void Main(string[] args){
+            Console.WriteLine("Введiть сторону куба: ");
+            double a = Convert.ToDouble(Console.ReadLine());
+            double objem = Math.Pow(a, 3);
+            Console.WriteLine(objem);
+        }
+    }
+}
