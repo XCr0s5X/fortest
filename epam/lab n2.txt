@@ -1,0 +1,85 @@
+using System;
+using System.Globalization;
+using System.Threading;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            start:
+            Console.WriteLine("Номер завдання (1-4)? (введiть exit для виходу з програми)");
+            string caseSwitch = Console.ReadLine();
+            if (caseSwitch == "exit")
+            {
+                goto exit;
+            }
+            if (caseSwitch != "1" || caseSwitch != "2" || caseSwitch != "3" || caseSwitch != "4")
+            {
+                Console.WriteLine("Спробуйте ще раз.");
+                goto start;
+            }
+            while (caseSwitch == "1" || caseSwitch == "2" || caseSwitch == "3" || caseSwitch == "4")
+            {
+                switch (caseSwitch)
+                {
+
+                    case "1":
+                        string[] values = { "Ivan", "Igor", "Svyatoslav", "Maryan", "Andriy", "Lena" };
+                        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                        foreach (var value in values)
+                            Console.WriteLine("{0} --> {1}", value, ti.ToLower(value));
+                        goto start;
+
+                    case "2":
+                        Console.WriteLine("1 iмя :");
+                        string string1 = Console.ReadLine();
+                        Console.WriteLine("2 iмя :");
+                        string string2 = Console.ReadLine();
+                        bool compareResult = string1.Equals(string2, StringComparison.Ordinal);
+                        Console.WriteLine("comparison of '{0}' and '{1}': {2}", string1, string2, compareResult ? "equal" : "not equal");
+                        if (string1[0] == string2[0])
+                        {
+                            if (string1[string1.Length - 1] == string2[string2.Length - 1])
+                            {
+                                Console.WriteLine("Перший i останнiй символи однаковi");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Перший i останнiй символи не однаковi");
+                        }
+                        goto start;
+
+                    case "3":
+                        Console.WriteLine("Type something \n");
+                        string a = Console.ReadLine();
+                        string b = a.Replace("a", "u");
+                        Console.WriteLine(b);
+                        goto start;
+
+                    case "4":
+                        string[] input;
+                        Console.Write("Enter string separated by commas and spaces (e.g. \"one, two, three\"): ");
+                        input = Console.ReadLine().Split(", ");
+                        Array.Sort(input, StringComparer.InvariantCultureIgnoreCase);
+                        for (int i = 0; i < input.Length; i++)
+                        {
+                            if (i != input.Length - 1)
+                            {
+                                Console.Write($"{input[i]}, ");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{input[i]}.");
+                            }
+                            Console.ReadKey();
+                        }
+                        goto start;
+                }
+            }
+        exit:;
+        }
+    }
+}
