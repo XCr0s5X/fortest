@@ -1,0 +1,175 @@
+#include <iostream>
+#include <stdlib.h>
+#include <clocale>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+start:
+    printf("Номер завдання (1-4)? (введiть 0 для виходу з програми)");
+    int input;
+    scanf_s("%i", &input);
+    if (input != 0) {
+        switch (input) {
+        case 1: {
+            printf("Введiть перше число :");
+            int a;
+            scanf_s("%i", &a);
+            printf("Введiть друге число :");
+            int b;
+            scanf_s("%i", &b);
+            if (a > b) {
+                printf("a > b\n");
+            }
+            else if (a < b) {
+                printf("a < b\n");
+            }
+            else {
+                printf("a = b\n");
+            }
+            goto start;
+        }
+        case 2: {
+            printf("Введiть першу сторону :");
+            int A;
+            scanf_s("%d", &A);
+            printf("Введiть другу сторону :");
+            int B;
+            scanf_s("%d", &B);
+            printf("Введiть третю сторону :");
+            int C;
+            scanf_s("%d", &C);
+            if (C > A + B || A > B + C || B > A + C) {
+                printf("Трикутника не iснує.\n");
+                goto start;
+            }
+            else if (A == B && A == C) {
+                printf("Трикутник рiвностороннiй.\n");
+                goto start;
+            }
+            printf("Введiть перший кут :");
+            int angle_A;
+            scanf_s("%d", &angle_A);
+            printf("Введiть другий кут :");
+            int angle_B;
+            scanf_s("%d", &angle_B);
+            printf("Введiть третiй кут :");
+            int angle_C;
+            scanf_s("%d", &angle_C);
+            int sum = angle_A + angle_B + angle_C;
+            if (sum == 180) {
+                if (A == B && B != C || B == C && B != A || A == C && A != B) {
+                    if (angle_A == 90 || angle_B == 90 || angle_C == 90) {
+                        printf("Трикутник прямокутний рiвнобедренний.\n");
+                    }
+                    else {
+                        printf("Трикутник рiвнобедренний.\n");
+                    }
+                }
+                else if (angle_A == 90 && angle_B == 45 || angle_B == 90 && angle_A == 45 || angle_C == 90 && angle_A == 45) {
+                    printf("Трикутник прямокутний рiвнобедренний.\n");
+                }
+                else if (angle_A == 90 || angle_B == 90 || angle_C == 90) {
+                    printf("Трикутник прямокутний.\n");
+                }
+                else if (angle_A < 90 && angle_B < 90 && angle_C > 90 || angle_A < 90 && angle_B > 90 && angle_C < 90 || angle_A > 90 && angle_B < 90 && angle_C < 90) {
+                    printf("Трикутник тупокутний.\n");
+                }
+                else {
+                    printf("Трикутник гострокутний.\n");
+                }
+            }
+            else {
+                printf("Трикутника не iснує.\n");
+            }
+
+            goto start;
+        }
+        case 3: {
+            printf("Введiть перших 3 цифри штрихкоду:");
+            int barcode;
+            scanf_s("%i", &barcode);
+            if (barcode < 1000) {
+                if (barcode >= 0 && barcode <= 9) {
+                    printf("Продукт з США.\n");
+                }
+                else if (barcode == 482) {
+                    printf("Продукт з Украiни.\n");
+                }
+                else if (barcode == 690 || barcode == 691) {
+                    printf("Продукт з Китаю.\n");
+                }
+                else {
+                    printf("Продукт не з Китаю.\n");
+                }
+            }
+            else {
+                printf("Програма не доскональна, тому тiльки перших 3 цифри.\n");
+            }
+            goto start;
+        }
+        case 4: {
+            int a, a1, a2, a3;
+            printf("Введiть число менша або рiвне 1000:");
+            scanf_s("%i", &a);
+            if (a == 1000) {
+                printf("Тисяча.");
+            }
+            else if (a == 0) {
+                printf("Нуль.");
+            }
+            else if (a < 1000) {
+                a1 = a % 10;
+                a2 = (a / 10) % 10;
+                a3 = (a / 100) % 10;
+                switch (a3)
+                {
+                case 1:printf("сто "); break;
+                case 2:printf("двicтi "); break;
+                case 3:printf("триста "); break;
+                case 4:printf("чотириста "); break;
+                case 5:printf("п'ятсот "); break;
+                case 6:printf("шiсот "); break;
+                case 7:printf("сiмсот "); break;
+                case 8:printf("вiсiмсот "); break;
+                case 9:printf("девятсот "); break;
+                }
+                switch (a2)
+                {
+                case 1:printf("десять "); break;
+                case 2:printf("двадцять "); break;
+                case 3:printf("тридцять "); break;
+                case 4:printf("сорок "); break;
+                case 5:printf("п'ятдесять "); break;
+                case 6:printf("шiстдесять "); break;
+                case 7:printf("сiмдесять "); break;
+                case 8:printf("вiсiмдесять "); break;
+                case 9:printf("девяносто "); break;
+                }
+                switch (a1)
+                {
+                case 1:printf("один\n"); break;
+                case 2:printf("два\n"); break;
+                case 3:printf("три\n"); break;
+                case 4:printf("чотири\n"); break;
+                case 5:printf("п'ять\n"); break;
+                case 6:printf("шiсть\n"); break;
+                case 7:printf("сiм \n"); break;
+                case 8:printf("вiciм\n"); break;
+                case 9:printf("дев'ять\n"); break;
+                }
+            }
+            else {
+                printf("Сказали ж максимум 1000.");
+            }
+            goto start;
+        }
+
+              goto start;
+        }
+    }
+    else {
+        return 0;
+    }
+}
