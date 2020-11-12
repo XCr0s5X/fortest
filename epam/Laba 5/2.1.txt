@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CSharp
+{
+    enum Month { January, February, March, April, May, June, July, August, September, October, November, December }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n;
+            Console.Write("Введiть порядковий номер мiсяця, але на 1 менше (0-11): ");
+            n = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Це: {(Month)n}");
+        }
+    }
+}

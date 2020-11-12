@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CSharp
+{
+    public enum LongRange : long { Max = 9223372036854775807, Min = -9223372036854775808 }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"Макс. значення LongRange: {(long)LongRange.Max}");
+            Console.WriteLine($"Мiн. значення LongRange: {(long)LongRange.Min}");
+        }
+    }
+}
