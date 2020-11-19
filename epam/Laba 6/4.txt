@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CSharp
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Кiлькiсть стовпцiв масиву: ");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Кiлькiсть рядкiв масиву: ");
+            int b = int.Parse(Console.ReadLine());
+            int[,] masive = new int[a, b];
+            for (int i = 0; i < masive.GetLength(0); i++)
+            {
+                for (int j = 0; j < masive.GetLength(1); j++)
+                {
+                    Console.WriteLine("X: " + i + "Y:" + j);
+                    masive[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            Console.WriteLine("---------------\n Наш масив\n---------------\n");
+            for (int i = 0; i < masive.GetLength(0); i++)
+            {
+                for (int j = 0; j < masive.GetLength(1); j++)
+                {
+                    Console.Write(masive[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            int max = masive[0, 0];
+            for (int i = 0; i < masive.GetLength(0); i++)
+            {
+                for (int j = 0; j < masive.GetLength(1); j++)
+                {
+                    if (masive[i, j] > max)
+                    {
+                        max = masive[i, j];
+                    }
+                }
+            }
+            Console.WriteLine("Найбiльше значення масиву: " + max);
+        }
+    }
+}

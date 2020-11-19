@@ -4,7 +4,7 @@ namespace MathClassCS
 {
 
 
-    namespace Epam_1._3
+    namespace CSharp
     {
         class Program
         {

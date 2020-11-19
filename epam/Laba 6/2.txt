@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CSharp
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("К-сть елементiв в масивi: ");
+            int a = int.Parse(Console.ReadLine());
+            double[] masive = new double[a];
+            for (int i = 0; i < masive.Length; i++)
+            {
+                Console.WriteLine("X: " + i);
+                masive[i] = int.Parse(Console.ReadLine());
+            }
+            int prosto = 0;
+            for (int i = 0; i < masive.Length; i++)
+            {
+                if (masive[i] % 2 == 0)
+                {
+                    prosto++;
+                }
+            }
+            Console.WriteLine("Кiлькiсть простих чисел: " + prosto);
+        }
+    }
+}

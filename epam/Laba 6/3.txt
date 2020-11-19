@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CSharp
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("К-сть елементiв в масивi: ");
+            int a = int.Parse(Console.ReadLine());
+            double[] masive = new double[a];
+            for(int i = 0; i < masive.Length; i++)
+            {
+                Console.WriteLine("X: " + i);
+                masive[i] = int.Parse(Console.ReadLine());
+            }            
+            int arrLength = masive.Length;
+            bool isMirror = false;
+            for (int i = 0; i < (masive.Length) / 2; i++)
+            {
+                if (masive[i] == masive[--arrLength])
+                {
+                    isMirror = true;
+                }
+                else
+                {
+                    isMirror = false;
+                    break;
+                }
+            }
+
+            if (isMirror)
+            {
+                Console.WriteLine("Масив чисел симетричний");
+            }
+            else
+            {
+                Console.WriteLine("Масив чисел не симетричний");
+            }
+        }
+    }
+}
