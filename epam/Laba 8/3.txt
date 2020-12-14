@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
+
+namespace lab_8_3
+{
+    [Serializable]
+    public class Car
+    {
+        public Int32 carId;
+        public decimal price;
+        public Int32 quantity;
+        public decimal total;
+
+        public Car() { }
+    }
+
+class Program
+    {
+        static void Serialize(string fileName, List<Car> carList)
+        {
+            Console.Out.WriteLine("Серiалiзацiя...");
+
+            using (var fileStream = new FileStream($"{fileName}.XML", FileMode.Create))
+            {
+                var xmlSerializer = new XmlSerializer(typeof(List<Car>));
+                xmlSerializer.Serialize(fileStream, carList);
+            }
+
+            Console.Out.WriteLine("Серiалiзовано!");
+        }
+
+        static void Deserialize(string fileName)
+        {
+            using (var fileStream = new FileStream($"{fileName}.XML", FileMode.Open))
+            {
+                var xmlSerializer = new XmlSerializer(typeof(List<Car>));
+                var data = (List<Car>)xmlSerializer.Deserialize(fileStream);
+
+                Console.Out.WriteLine("Десерiалiзацiя.");
+
+                foreach (var car in data)
+                {
+                    Console.Out.WriteLine($"\tКiлькiсть машин: {car.quantity}");
+                }
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            var fileName = "CarList";
+            var carList = new List<Car>
+            {
+                new Car
+                {
+                    carId = 0,
+                    price = 100999,
+                    quantity = 1
+                },
+                new Car
+                {
+                    carId = 1,
+                    price = 125999,
+                    quantity = 16
+                },
+                new Car
+                {
+                    carId = 2,
+                    price = 559999,
+                    quantity = 6
+                }
+            };
+
+            Serialize(fileName, carList);
+            Deserialize(fileName);
+
+            Console.Out.WriteLine("Серiалiзацiя та деcерiалiзацiя пройденi.");
+        }
+    }
+}
